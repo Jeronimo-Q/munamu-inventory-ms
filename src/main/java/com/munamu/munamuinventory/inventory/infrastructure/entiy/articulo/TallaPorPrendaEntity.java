@@ -15,9 +15,20 @@ public class TallaPorPrendaEntity {
     @Enumerated(EnumType.STRING)
     private Talla talla;
 
+    @Column(nullable = false,name = "codigo_barra")
+    private long codigoBarras;
+
     @ManyToOne
     @JoinColumn(name = "prenda_id",nullable = false)
     private PrendaEntity prenda;
+
+    @ManyToOne
+    @JoinColumn(name = "color_id",nullable = false)
+    private ColorEntity color;
+
+
+    public TallaPorPrendaEntity() {
+    }
 
     public UUID getId() {
         return id;
@@ -43,6 +54,19 @@ public class TallaPorPrendaEntity {
         this.prenda = prenda;
     }
 
-    public TallaPorPrendaEntity() {
+    public ColorEntity getColor() {
+        return color;
+    }
+
+    public void setColor(ColorEntity color) {
+        this.color = color;
+    }
+
+    public long getCodigoBarras() {
+        return codigoBarras;
+    }
+
+    public void setCodigoBarras(long codigoBarras) {
+        this.codigoBarras = codigoBarras;
     }
 }

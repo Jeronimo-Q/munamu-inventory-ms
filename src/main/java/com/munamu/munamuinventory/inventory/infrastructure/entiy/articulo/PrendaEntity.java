@@ -1,6 +1,5 @@
 package com.munamu.munamuinventory.inventory.infrastructure.entiy.articulo;
 
-import com.munamu.munamuinventory.inventory.domain.domain.articulo.enums.Categoria;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.enums.EstadoPrenda;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.enums.Genero;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.enums.TipoPrenda;
@@ -17,15 +16,21 @@ public class PrendaEntity {
     private UUID id;
 
     @Column(nullable = false)
-    private String referencia;
+    private int referencia;
+
+    @Column(nullable = false)
+    private String descripcion;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Genero genero;
+
     @Enumerated(EnumType.STRING)
-    private Categoria categoria;
-    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private TipoPrenda tipoPrenda;
+
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private EstadoPrenda estadoPrenda;
 
     public PrendaEntity() {
@@ -39,11 +44,11 @@ public class PrendaEntity {
         this.id = id;
     }
 
-    public String getReferencia() {
+    public int getReferencia() {
         return referencia;
     }
 
-    public void setReferencia(String referencia) {
+    public void setReferencia(int referencia) {
         this.referencia = referencia;
     }
 
@@ -53,14 +58,6 @@ public class PrendaEntity {
 
     public void setGenero(Genero genero) {
         this.genero = genero;
-    }
-
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
     }
 
     public TipoPrenda getTipoPrenda() {
@@ -77,5 +74,13 @@ public class PrendaEntity {
 
     public void setEstadoPrenda(EstadoPrenda estadoPrenda) {
         this.estadoPrenda = estadoPrenda;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }

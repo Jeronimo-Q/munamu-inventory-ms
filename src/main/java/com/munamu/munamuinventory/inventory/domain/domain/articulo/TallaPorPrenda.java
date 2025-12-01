@@ -6,7 +6,9 @@ public class TallaPorPrenda {
 
     private String id;
     private Talla talla;
+    private long codigoBarra;
     private Prenda prenda;
+    private Color color;
 
     public TallaPorPrenda() {
     }
@@ -33,5 +35,21 @@ public class TallaPorPrenda {
 
     public void setPrenda(Prenda prenda) {
         this.prenda = prenda;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public long getCodigoBarra() {
+        return codigoBarra;
+    }
+
+    public void setCodigoBarra(long codigoBarra) {
+        this.codigoBarra = codigoBarra;
     }
 }

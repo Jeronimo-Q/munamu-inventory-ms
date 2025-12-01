@@ -1,6 +1,5 @@
 package com.munamu.munamuinventory.inventory.domain.domain.articulo;
 
-import com.munamu.munamuinventory.inventory.domain.domain.articulo.enums.Categoria;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.enums.EstadoPrenda;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.enums.Genero;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.enums.TipoPrenda;
@@ -8,9 +7,9 @@ import com.munamu.munamuinventory.inventory.domain.domain.articulo.enums.TipoPre
 public class Prenda {
 
     private String id;
-    private String referencia;
+    private String descripcion;
+    private int referencia;
     private Genero genero;
-    private Categoria categoria;
     private TipoPrenda tipoPrenda;
     private EstadoPrenda estadoPrenda;
 
@@ -25,11 +24,11 @@ public class Prenda {
         this.id = id;
     }
 
-    public String getReferencia() {
+    public int getReferencia() {
         return referencia;
     }
 
-    public void setReferencia(String referencia) {
+    public void setReferencia(int referencia) {
         this.referencia = referencia;
     }
 
@@ -39,14 +38,6 @@ public class Prenda {
 
     public void setGenero(Genero genero) {
         this.genero = genero;
-    }
-
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
     }
 
     public TipoPrenda getTipoPrenda() {
@@ -63,5 +54,13 @@ public class Prenda {
 
     public void setEstadoPrenda(EstadoPrenda estadoPrenda) {
         this.estadoPrenda = estadoPrenda;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }
