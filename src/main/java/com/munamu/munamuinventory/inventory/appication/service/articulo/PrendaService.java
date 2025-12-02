@@ -1,10 +1,14 @@
 package com.munamu.munamuinventory.inventory.appication.service.articulo;
 
-import com.munamu.munamuinventory.inventory.appication.dto.request.CrearPrendaRequest;
-import com.munamu.munamuinventory.inventory.appication.mapper.PrendaMapperDto;
+import com.munamu.munamuinventory.inventory.appication.dto.request.articulo.CrearPrendaRequest;
+import com.munamu.munamuinventory.inventory.appication.mapper.articulo.PrendaMapperDto;
 import com.munamu.munamuinventory.inventory.appication.usecase.articulo.PrendaUseCase;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.Prenda;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.enums.EstadoPrenda;
+import com.munamu.munamuinventory.inventory.domain.domain.articulo.enums.Genero;
+import com.munamu.munamuinventory.inventory.domain.domain.articulo.enums.TipoPrenda;
+import com.munamu.munamuinventory.inventory.domain.domain.articulo.rule.EnumValidator;
+import com.munamu.munamuinventory.inventory.domain.exception.ReferenciaDuplicadaException;
 import com.munamu.munamuinventory.inventory.infrastructure.adapters.articulo.PrendaJpaAdapter;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -25,21 +29,24 @@ public class PrendaService implements PrendaUseCase {
 
     @Override
     public String addPrenda(CrearPrendaRequest prendaRequest) {
-        try{
-            if (prendaJpaAdapter.existsByReferencia(prendaRequest.getReferencia())){
-                throw new RuntimeException("Referencia ya existe existe");
-            }
-            var prendaDomain = prendaMapperDto.toDomain(prendaRequest);
-            prendaDomain.setEstadoPrenda(EstadoPrenda.ACTIVA);
-            return prendaJpaAdapter.save(prendaDomain);
+        var prendaDomain = prendaMapperDto.toDomain(prendaRequest);
+
+        EnumValidator.enumValidator(Genero.class,prendaDomain.getGenero().toString(), "genero");
+        EnumValidator.enumValidator(TipoPrenda.class,prendaDomain.getTipoPrenda().toString(), "tipo prenda");
+
+        if (prendaJpaAdapter.existsByReferencia(prendaRequest.getReferencia())){
+            throw new ReferenciaDuplicadaException(prendaRequest.getReferencia());
         }
-        catch (Exception e) {
-            throw new RuntimeException("Error adding prenda");
-        }
+        prendaDomain.setEstadoPrenda(EstadoPrenda.ACTIVA);
+
+        prendaJpaAdapter.save(prendaDomain);
+
+        return "Se guardo de manera exitosa la prenda";
+
     }
 
     @Override
     public List<Prenda> getPrendas() {
-        return List.of();
+        return prendaJpaAdapter.findAll();
     }
 }

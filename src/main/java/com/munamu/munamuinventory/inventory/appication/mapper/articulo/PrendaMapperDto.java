@@ -1,8 +1,7 @@
-package com.munamu.munamuinventory.inventory.appication.mapper;
+package com.munamu.munamuinventory.inventory.appication.mapper.articulo;
 
-import com.munamu.munamuinventory.inventory.appication.dto.request.CrearPrendaRequest;
+import com.munamu.munamuinventory.inventory.appication.dto.request.articulo.CrearPrendaRequest;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.Prenda;
-import com.munamu.munamuinventory.inventory.domain.domain.articulo.enums.EstadoPrenda;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.enums.Genero;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.enums.TipoPrenda;
 import org.mapstruct.Mapper;

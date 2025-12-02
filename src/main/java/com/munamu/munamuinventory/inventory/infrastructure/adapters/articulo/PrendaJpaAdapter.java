@@ -3,8 +3,10 @@ package com.munamu.munamuinventory.inventory.infrastructure.adapters.articulo;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.Prenda;
 import com.munamu.munamuinventory.inventory.domain.repository.articulo.PrendaRepository;
 import com.munamu.munamuinventory.inventory.infrastructure.entiy.articulo.PrendaEntity;
+import com.munamu.munamuinventory.inventory.infrastructure.exception.DatabaseException;
 import com.munamu.munamuinventory.inventory.infrastructure.mapper.articulo.PrendaMapperEntity;
 import com.munamu.munamuinventory.inventory.infrastructure.repository.articulo.PrendaRepositoryJpa;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,16 +24,24 @@ public class PrendaJpaAdapter implements PrendaRepository {
     }
 
     @Override
-    public String save(Prenda prenda) {
+    public void save(Prenda prenda) {
+        try{
         PrendaEntity prendaEntity = prendaMapperEntity.toEntity(prenda);
         prendaRepositoryJpa.save(prendaEntity);
-        return "Se guardo de manera exitosa la prenda";
+        }
+        catch (DataAccessException e) {
+            throw new DatabaseException("Error al agregar la prenda ",e);
+        }
     }
 
     @Override
     public List<Prenda> findAll() {
-        List<PrendaEntity> prendaEnity = prendaRepositoryJpa.findAll();
-        return prendaMapperEntity.toDomain(prendaEnity);
+        try {
+            List<PrendaEntity> prendaEnity = prendaRepositoryJpa.findAll();
+            return prendaMapperEntity.toDomain(prendaEnity);
+        }catch (DataAccessException e) {
+            throw new DatabaseException("Error al consultar las prendas ",e);
+        }
     }
 
     @Override

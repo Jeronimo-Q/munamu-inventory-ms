@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PrendaRepository {
-    String save(Prenda prenda);
+    void save(Prenda prenda);
     List<Prenda> findAll();
     Optional<Prenda> findByReferencia(int referencia);
 

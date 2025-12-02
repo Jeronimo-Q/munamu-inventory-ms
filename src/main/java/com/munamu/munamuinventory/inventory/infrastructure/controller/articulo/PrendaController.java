@@ -1,9 +1,11 @@
 package com.munamu.munamuinventory.inventory.infrastructure.controller.articulo;
 
-import com.munamu.munamuinventory.inventory.appication.dto.request.CrearPrendaRequest;
+import com.munamu.munamuinventory.inventory.appication.dto.request.articulo.CrearPrendaRequest;
 import com.munamu.munamuinventory.inventory.appication.service.articulo.PrendaService;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.Prenda;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,15 +22,19 @@ public class PrendaController {
     }
 
     @GetMapping
-    public List<Prenda> getPrenda() {
-        return null;
+    public ResponseEntity<List<Prenda>> getPrenda() {
+        List<Prenda> prendas = prendaService.getPrendas();
+
+        return ResponseEntity.status(HttpStatus.OK).body(prendas);
     }
 
     @PostMapping
-    public Prenda addPrenda(@Valid @RequestBody CrearPrendaRequest prendaRequest) {
+    public ResponseEntity<String> addPrenda(@Valid @RequestBody CrearPrendaRequest prendaRequest) {
 
-        prendaService.addPrenda(prendaRequest);
+        String mensaje = prendaService.addPrenda(prendaRequest);
 
-        return null;
+        return ResponseEntity.status(HttpStatus.CREATED).body(mensaje);
     }
+
+
 }

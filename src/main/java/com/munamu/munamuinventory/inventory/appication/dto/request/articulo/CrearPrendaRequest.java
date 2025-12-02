@@ -1,10 +1,11 @@
-package com.munamu.munamuinventory.inventory.appication.dto.request;
+package com.munamu.munamuinventory.inventory.appication.dto.request.articulo;
 import jakarta.validation.constraints.*;
 
 public class CrearPrendaRequest {
 
     @NotNull
     @Positive
+    @Max(999999) @Min(100)
     private int referencia;
 
     @NotBlank
