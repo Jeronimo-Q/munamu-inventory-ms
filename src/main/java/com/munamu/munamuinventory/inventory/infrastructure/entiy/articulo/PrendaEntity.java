@@ -34,6 +34,7 @@ public class PrendaEntity {
     private EstadoPrenda estadoPrenda;
 
     public PrendaEntity() {
+        // Es esencial para que funciono JPA
     }
 
     public UUID getId() {

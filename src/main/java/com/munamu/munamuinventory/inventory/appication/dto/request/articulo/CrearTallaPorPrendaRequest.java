@@ -1,54 +1,49 @@
 package com.munamu.munamuinventory.inventory.appication.dto.request.articulo;
 
-import com.munamu.munamuinventory.inventory.domain.domain.articulo.Color;
-import com.munamu.munamuinventory.inventory.domain.domain.articulo.enums.Talla;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-
-import java.util.List;
-import java.util.UUID;
 
 public class CrearTallaPorPrendaRequest {
 
     @NotNull
-    private Talla tallas;
+    private String talla;
     @NotNull
-    private String colors;
+    private String color;
     @NotNull
-    private UUID idPrenda;
+    private String idPrenda;
     @NotNull
     @Positive
-    private String codigoDebarras;
+    private String codigoBarra;
 
-    public Talla getTallas() {
-        return tallas;
+    public String getTalla() {
+        return talla;
     }
 
-    public void setTallas(Talla tallas) {
-        this.tallas = tallas;
+    public void setTalla(String talla) {
+        this.talla = talla;
     }
 
-    public String getColors() {
-        return colors;
+    public String getColor() {
+        return color;
     }
 
-    public void setColors(String colors) {
-        this.colors = colors;
+    public void setColor(String color) {
+        this.color = color;
     }
 
-    public UUID getIdPrenda() {
+    public String getIdPrenda() {
         return idPrenda;
     }
 
-    public void setIdPrenda(UUID idPrenda) {
+    public void setIdPrenda(String idPrenda) {
         this.idPrenda = idPrenda;
     }
 
-    public String getCodigoDebarras() {
-        return codigoDebarras;
+    public String getCodigoBarra() {
+        return codigoBarra;
     }
 
-    public void setCodigoDebarras(String codigoDebarras) {
-        this.codigoDebarras = codigoDebarras;
+    public void setCodigoBarra(String codigoBarra) {
+        this.codigoBarra = codigoBarra;
     }
 }

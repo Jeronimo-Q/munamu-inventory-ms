@@ -10,8 +10,6 @@ public class TallaPorPrenda {
     private Prenda prenda;
     private Color color;
 
-    private TallaPorPrenda() {
-    }
 
     public String getId() {
         return id;

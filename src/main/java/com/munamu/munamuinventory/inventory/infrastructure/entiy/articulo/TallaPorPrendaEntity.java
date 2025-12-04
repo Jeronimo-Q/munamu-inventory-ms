@@ -16,7 +16,7 @@ public class TallaPorPrendaEntity {
     private Talla talla;
 
     @Column(nullable = false,name = "codigo_barra")
-    private long codigoBarras;
+    private long codigoBarra;
 
     @ManyToOne
     @JoinColumn(name = "prenda_id",nullable = false)
@@ -28,6 +28,7 @@ public class TallaPorPrendaEntity {
 
 
     public TallaPorPrendaEntity() {
+        //Es esencial para el uso de JPA
     }
 
     public UUID getId() {
@@ -62,11 +63,11 @@ public class TallaPorPrendaEntity {
         this.color = color;
     }
 
-    public long getCodigoBarras() {
-        return codigoBarras;
+    public long getCodigoBarra() {
+        return codigoBarra;
     }
 
-    public void setCodigoBarras(long codigoBarras) {
-        this.codigoBarras = codigoBarras;
+    public void setCodigoBarra(long codigoBarras) {
+        this.codigoBarra = codigoBarras;
     }
 }

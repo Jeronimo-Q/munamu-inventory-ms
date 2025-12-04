@@ -15,6 +15,7 @@ public class ColorEntity {
     private String color;
 
     public ColorEntity() {
+        //Constructor esencial para JPA
     }
 
     public UUID getId() {

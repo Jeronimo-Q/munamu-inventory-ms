@@ -13,9 +13,6 @@ public class Prenda {
     private TipoPrenda tipoPrenda;
     private EstadoPrenda estadoPrenda;
 
-    public Prenda() {
-    }
-
     public String getId() {
         return id;
     }
