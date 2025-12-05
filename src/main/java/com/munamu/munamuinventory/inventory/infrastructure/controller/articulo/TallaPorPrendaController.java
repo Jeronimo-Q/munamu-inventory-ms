@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 
-@RequestMapping("/api/v1/rest/prendas/configuracion")
+@RequestMapping("/api/v1/rest//inventory/prendas/configuracion")
 public class TallaPorPrendaController {
 
     private final TallaPorPrendaService tallaPorPrendaService;
