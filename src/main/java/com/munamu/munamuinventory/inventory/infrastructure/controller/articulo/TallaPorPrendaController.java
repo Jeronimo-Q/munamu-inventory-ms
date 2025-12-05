@@ -2,12 +2,10 @@ package com.munamu.munamuinventory.inventory.infrastructure.controller.articulo;
 
 import com.munamu.munamuinventory.inventory.appication.dto.request.articulo.CrearTallaPorPrendaRequest;
 import com.munamu.munamuinventory.inventory.appication.service.articulo.TallaPorPrendaService;
+import com.munamu.munamuinventory.inventory.domain.domain.articulo.TallaPorPrenda;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +27,14 @@ public class TallaPorPrendaController {
 
         return ResponseEntity.ok().body(mensaje);
 
+    }
+
+    @GetMapping("/get-by-prenda/{prendaId}")
+    public ResponseEntity<List<TallaPorPrenda>> getPrendas(@PathVariable String prendaId) {
+
+        List<TallaPorPrenda> tallaPorPrendas = tallaPorPrendaService.getTallaPorPrendasPerPrendaId(prendaId);
+
+        return ResponseEntity.ok().body(tallaPorPrendas);
     }
 
 }

@@ -11,7 +11,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 
 @Mapper(componentModel = "spring")
-public interface TallPorPrendaMapperDto {
+public interface TallaPorPrendaMapperDto {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "talla", source = "talla", qualifiedByName = "mapTalla")

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public class PrendaJpaAdapter implements PrendaRepository {
@@ -57,6 +58,16 @@ public class PrendaJpaAdapter implements PrendaRepository {
     @Override
     public boolean existsByReferencia(int referencia) {
         return prendaRepositoryJpa.existsByReferencia(referencia);
+    }
+
+    @Override
+    public boolean existsById(String idPrenda) {
+        try {
+            return prendaRepositoryJpa.existsById(UUID.fromString(idPrenda));
+        }catch (DataAccessException e) {
+            throw new DatabaseException("Error al consultar las prendas ",e);
+        }
+
     }
 
 }

@@ -4,6 +4,7 @@ import com.munamu.munamuinventory.inventory.domain.domain.articulo.Prenda;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface PrendaRepository {
     void save(Prenda prenda);
@@ -12,4 +13,5 @@ public interface PrendaRepository {
 
     //REGLAS DE NEGOCIO
     boolean existsByReferencia(int referencia);
+    boolean existsById(String id);
 }
