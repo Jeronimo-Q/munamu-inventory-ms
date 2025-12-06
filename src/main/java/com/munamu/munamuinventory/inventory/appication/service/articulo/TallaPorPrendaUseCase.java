@@ -2,7 +2,6 @@ package com.munamu.munamuinventory.inventory.appication.service.articulo;
 
 import com.munamu.munamuinventory.inventory.appication.dto.request.articulo.CrearTallaPorPrendaRequest;
 import com.munamu.munamuinventory.inventory.appication.mapper.articulo.TallaPorPrendaMapperDto;
-import com.munamu.munamuinventory.inventory.appication.usecase.articulo.TallaPorPrendaUseCase;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.TallaPorPrenda;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.enums.Talla;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.rule.EnumValidator;
@@ -17,14 +16,14 @@ import java.util.List;
 
 @Service
 @Transactional
-public class TallaPorPrendaService implements TallaPorPrendaUseCase {
+public class TallaPorPrendaUseCase implements com.munamu.munamuinventory.inventory.appication.usecase.articulo.TallaPorPrendaUseCase {
 
     private final TallaPorPrendaJpaAdapter tallaPorPrendaJpaAdapter;
     private final TallaPorPrendaMapperDto tallaPorPrendaMapperDto;
     private final PrendaJpaAdapter prendaJpaAdapter;
     private final ColorJpaAdapter colorJpaAdapter;
 
-    public TallaPorPrendaService(TallaPorPrendaJpaAdapter tallaPorPrendaJpaAdapter, TallaPorPrendaMapperDto tallaPorPrendaMapperDto, PrendaJpaAdapter prendaJpaAdapter, ColorJpaAdapter colorJpaAdapter) {
+    public TallaPorPrendaUseCase(TallaPorPrendaJpaAdapter tallaPorPrendaJpaAdapter, TallaPorPrendaMapperDto tallaPorPrendaMapperDto, PrendaJpaAdapter prendaJpaAdapter, ColorJpaAdapter colorJpaAdapter) {
         this.tallaPorPrendaJpaAdapter = tallaPorPrendaJpaAdapter;
         this.tallaPorPrendaMapperDto = tallaPorPrendaMapperDto;
         this.prendaJpaAdapter = prendaJpaAdapter;

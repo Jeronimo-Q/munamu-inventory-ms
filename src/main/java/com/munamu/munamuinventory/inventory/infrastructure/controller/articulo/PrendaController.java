@@ -1,7 +1,7 @@
 package com.munamu.munamuinventory.inventory.infrastructure.controller.articulo;
 
 import com.munamu.munamuinventory.inventory.appication.dto.request.articulo.CrearPrendaRequest;
-import com.munamu.munamuinventory.inventory.appication.service.articulo.PrendaService;
+import com.munamu.munamuinventory.inventory.appication.service.articulo.PrendaUseCase;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.Prenda;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -15,15 +15,15 @@ import java.util.List;
 @RequestMapping("/api/v1/rest/inventory/prenda")
 public class PrendaController {
 
-    private final PrendaService prendaService;
+    private final PrendaUseCase prendaUseCase;
 
-    public PrendaController(PrendaService prendaService) {
-        this.prendaService = prendaService;
+    public PrendaController(PrendaUseCase prendaUseCase) {
+        this.prendaUseCase = prendaUseCase;
     }
 
     @GetMapping
     public ResponseEntity<List<Prenda>> getPrenda() {
-        List<Prenda> prendas = prendaService.getPrendas();
+        List<Prenda> prendas = prendaUseCase.getPrendas();
 
         return ResponseEntity.status(HttpStatus.OK).body(prendas);
     }
@@ -31,7 +31,7 @@ public class PrendaController {
     @PostMapping
     public ResponseEntity<String> addPrenda(@Valid @RequestBody CrearPrendaRequest prendaRequest) {
 
-        String mensaje = prendaService.addPrenda(prendaRequest);
+        String mensaje = prendaUseCase.addPrenda(prendaRequest);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(mensaje);
     }

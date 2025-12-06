@@ -34,7 +34,7 @@ public class RemisionCorteEntity {
     @Column(nullable = false)
     private EstadoRemision estadoRemision;
 
-    @OneToMany(mappedBy = "remisionCorteEntity")
+    @OneToMany(mappedBy = "remisionCorteEntity",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetalleRemisionCorteEntity> detalleRemisionCorteEntities;
 
     public RemisionCorteEntity() {

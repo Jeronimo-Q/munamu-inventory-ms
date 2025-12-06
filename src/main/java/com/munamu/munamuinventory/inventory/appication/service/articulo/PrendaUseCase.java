@@ -2,7 +2,6 @@ package com.munamu.munamuinventory.inventory.appication.service.articulo;
 
 import com.munamu.munamuinventory.inventory.appication.dto.request.articulo.CrearPrendaRequest;
 import com.munamu.munamuinventory.inventory.appication.mapper.articulo.PrendaMapperDto;
-import com.munamu.munamuinventory.inventory.appication.usecase.articulo.PrendaUseCase;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.Prenda;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.enums.EstadoPrenda;
 import com.munamu.munamuinventory.inventory.domain.domain.articulo.enums.Genero;
@@ -17,12 +16,12 @@ import java.util.List;
 
 @Service
 @Transactional
-public class PrendaService implements PrendaUseCase {
+public class PrendaUseCase implements com.munamu.munamuinventory.inventory.appication.usecase.articulo.PrendaUseCase {
 
     private final PrendaJpaAdapter prendaJpaAdapter;
     private final PrendaMapperDto prendaMapperDto;
 
-    public PrendaService(PrendaJpaAdapter prendaJpaAdapter, PrendaMapperDto prendaMapperDto) {
+    public PrendaUseCase(PrendaJpaAdapter prendaJpaAdapter, PrendaMapperDto prendaMapperDto) {
         this.prendaJpaAdapter = prendaJpaAdapter;
         this.prendaMapperDto = prendaMapperDto;
     }
